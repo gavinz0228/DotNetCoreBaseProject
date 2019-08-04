@@ -4,7 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using App.Core.Interfaces;
-using App.Core.Enties;
+using App.Core.Entities;
 using App.Infrastructure.Data;
 
 namespace App.Infrastructure.Repositories{

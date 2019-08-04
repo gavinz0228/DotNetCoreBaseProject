@@ -4,15 +4,22 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using CoreProjectStructure.Models;
-
-namespace CoreProjectStructure.Controllers
+using App.Web.Models;
+using App.Core.Interfaces;
+using App.Core.Entities;
+namespace App.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        IUserService _userService;
+        public HomeController(IUserService userService)
         {
-            return View();
+            this._userService = userService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var users = await _userService.ListUsers();
+            return View(users);
         }
 
         public IActionResult About()

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.Collections.Generic;
-using App.Core.Enties;
+using App.Core.Entities;
 
 namespace App.Infrastructure.Data{
     public class DataContext: DbContext
@@ -9,9 +9,6 @@ namespace App.Infrastructure.Data{
         public DbSet<User> Users {get;set;}
         public DataContext(DbContextOptions<DataContext> options):base(options)
         {
-
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
 
         }
     }

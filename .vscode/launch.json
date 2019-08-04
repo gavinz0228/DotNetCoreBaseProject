@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/App.Web/bin/Debug/netcoreapp2.1/CoreProjectStructure.dll",
+            "program": "${workspaceFolder}/App.Web/bin/Debug/netcoreapp2.1/App.Web.dll",
             "args": [],
             "cwd": "${workspaceFolder}/App.Web",
             "stopAtEntry": false,

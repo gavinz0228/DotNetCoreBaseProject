@@ -1,6 +1,6 @@
 using System.Linq;
 using App.Core.Interfaces;
-using App.Core.Enties;
+using App.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Infrastructure.Data{

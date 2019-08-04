@@ -9,8 +9,14 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace CoreProjectStructure
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.InMemory;
+using App.Core.Services;
+using App.Core.Interfaces;
+using App.Infrastructure.Repositories;
+using App.Infrastructure.Data;
+using App.Infrastructure.Data.Test;
+namespace App.Web
 {
     public class Startup
     {
@@ -30,7 +36,11 @@ namespace CoreProjectStructure
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
 
+            ConfigureDevServices(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -58,6 +68,10 @@ namespace CoreProjectStructure
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+        public void ConfigureDevServices(IServiceCollection services)
+        {
+            services.AddDbContext<DataContext>(options =>options.UseInMemoryDatabase("Data"));
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using App.Core.Interfaces;
-using App.Core.Enties;
+using App.Core.Entities;
 
 namespace App.Core.Services{
     public class UserService: IUserService{
@@ -15,7 +16,10 @@ namespace App.Core.Services{
             this._userRepository.Add(user);
             await this._unitOfWork.CompleteAsync();
         }
-
+        public async Task<IEnumerable<User>> ListUsers()
+        {
+            return await this._userRepository.ListAsync();
+        }
         public Task<bool> Authenticate(User user)
         {
             throw new System.NotImplementedException();

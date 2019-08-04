@@ -4,3 +4,5 @@ App.Web/bin/**
 App.Web/obj/**
 App.Infrastructure/bin/**
 App.Infrastructure/obj/**
+UnitTests/bin/**
+UnitTests/obj/**
