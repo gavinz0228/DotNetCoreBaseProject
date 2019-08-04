@@ -1,0 +1,6 @@
+App.Core/bin/**
+App.Core/obj/**
+App.Web/bin/**
+App.Web/obj/**
+App.Infrastructure/bin/**
+App.Infrastructure/obj/**
