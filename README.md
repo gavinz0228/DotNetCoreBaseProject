@@ -6,4 +6,5 @@ To be completed:
   - Add testing classes
   - Implement basic athentication
   - Add Logging
+  - Add Error handling
   
