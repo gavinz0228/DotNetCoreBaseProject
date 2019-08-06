@@ -5,4 +5,5 @@ To be completed:
   - Add data seeding
   - Add testing classes
   - Implement basic athentication
+  - Add Logging
   
