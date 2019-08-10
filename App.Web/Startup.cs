@@ -48,6 +48,7 @@ namespace App.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -71,7 +72,8 @@ namespace App.Web
         }
         public void ConfigureDevServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>options.UseInMemoryDatabase("Data"));
+            services.AddDbContext<DataContext>(options =>options.UseSqlite("Data Source=blogging.db"));
+            
         }
     }
 }
