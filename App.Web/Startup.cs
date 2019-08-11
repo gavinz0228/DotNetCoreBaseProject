@@ -43,6 +43,7 @@ namespace App.Web
             ConfigureDevServices(services);
             services.AddMvc();
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,11 +70,16 @@ namespace App.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<DataContext>();
+                DataContextSeeding.Seed(dbContext);
+            }
         }
         public void ConfigureDevServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options =>options.UseSqlite("Data Source=database.db"));
-            
         }
     }
 }
