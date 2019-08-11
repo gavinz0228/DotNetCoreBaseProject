@@ -41,8 +41,8 @@ namespace App.Web
             services.AddScoped<IUserService, UserService>();
 
             ConfigureDevServices(services);
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc();
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,7 +72,7 @@ namespace App.Web
         }
         public void ConfigureDevServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(options =>options.UseSqlite("Data Source=blogging.db"));
+            services.AddDbContext<DataContext>(options =>options.UseSqlite("Data Source=database.db"));
             
         }
     }
