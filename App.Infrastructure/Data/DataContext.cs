@@ -23,6 +23,7 @@ namespace App.Infrastructure.Data{
             }
             modelBuilder.Entity<User>().HasData(users.ToArray());
             */
+            
         }
         protected void ConfigureUser(ModelBuilder modelBuilder)
         {
