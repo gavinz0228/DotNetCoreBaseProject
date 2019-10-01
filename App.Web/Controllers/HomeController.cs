@@ -25,11 +25,10 @@ namespace App.Web.Controllers
             this._logger.LogDebug($"{users.Count()} of users found.");
             return View(users);
         }
-
+        [Route("/About")]
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            throw new Exception("Test global exception handling");
             return View();
         }
 

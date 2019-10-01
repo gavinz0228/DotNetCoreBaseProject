@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +17,7 @@ using App.Core.Interfaces;
 using App.Infrastructure.Repositories;
 using App.Infrastructure.Data;
 using App.Infrastructure.Data.Test;
+using App.Web.Infrastructure;
 namespace App.Web
 {
     public class Startup
@@ -45,12 +47,14 @@ namespace App.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseCustomExceptionHandler(logger);
+                //app.UseDeveloperExceptionPage();
+                
             }
             else
             {
